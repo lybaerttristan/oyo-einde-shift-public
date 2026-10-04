@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sint-Baafs — Rapport 2 oktober</title>
+  <style>
+
+    :root {
+      --bg: #f5f3ee; --card: #fff; --ink: #1c1c1c; --muted: #6b6b6b; --line: #e7e2d7;
+      --blue: #2f6fb0; --orange: #d9822b; --dark: #1f2937; --green: #1f7a3f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+    main { max-width: 1040px; margin: 0 auto; padding: 24px 18px 42px; }
+    .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+    h1 { margin: 0; font-size: clamp(25px, 4vw, 34px); letter-spacing: -.03em; }
+    .eyebrow { margin: 0 0 5px; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .date { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { margin-bottom: 18px; background: var(--dark); color: #fff; border: 2px solid var(--dark); border-radius: 16px; padding: 22px 22px 20px; }
+    .hero h2 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #d7dbe1; }
+    .hero .value { margin: 0; color: #fff; font-size: clamp(40px, 8vw, 64px); font-weight: 780; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .hero .hint { margin: 8px 0 0; color: #c5cad1; font-size: 13px; }
+    .chart-card { margin-bottom: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 17px 17px 16px; }
+    .chart-card h2 { margin: 0; font-size: 17px; }
+    .chart-sub { margin: 3px 0 18px; color: var(--muted); font-size: 13px; }
+    .bars { display: flex; align-items: flex-end; justify-content: space-around; gap: 18px; height: 220px; padding: 12px 10px 0; border-bottom: 1px solid var(--line); }
+    .bar-wrap { display: flex; flex: 1; height: 100%; max-width: 190px; flex-direction: column; align-items: center; justify-content: flex-end; }
+    .bar-value { margin-bottom: 6px; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .bar { width: min(100%, 92px); min-height: 5px; border-radius: 8px 8px 0 0; }
+    .bar-label { margin-top: 9px; color: var(--muted); font-size: 13px; text-align: center; }
+    .percent-wrap { margin-bottom: 18px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 17px 17px 16px; }
+    .card h2 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+    .percent { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .percent h2, .percent .hint { color: #d7dbe1; }
+    .percent .value { margin: 0; color: #fff; font-size: clamp(35px, 6vw, 56px); font-weight: 750; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+    .hint { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    footer { margin-top: 22px; color: var(--muted); font-size: 12px; }
+    .percent-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .percent-head h2 { margin: 0; }
+    .badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 12px; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .badge-excellent { background: #047857; color: #fff; }
+    .badge-good { background: #1f7a3f; color: #fff; }
+    .badge-ok { background: #b45309; color: #fff; }
+    .badge-bad { background: #b42318; color: #fff; }
+    .badge-unreal { background: #6b7280; color: #fff; }
+    .percent-excellent { background: #064e3b; border-color: #064e3b; }
+    .percent-good { background: #14532d; border-color: #14532d; }
+    .percent-ok { background: #78350f; border-color: #78350f; }
+    .percent-bad { background: #7f1d1d; border-color: #7f1d1d; }
+    .percent-unreal { background: #374151; border-color: #374151; }
+    .percent-excellent h2, .percent-excellent .hint, .percent-excellent .target-label { color: #a7f3d0; }
+    .percent-good h2, .percent-good .hint, .percent-good .target-label { color: #d1fae5; }
+    .percent-ok h2, .percent-ok .hint, .percent-ok .target-label { color: #fde68a; }
+    .percent-bad h2, .percent-bad .hint, .percent-bad .target-label { color: #fecaca; }
+    .percent-unreal h2, .percent-unreal .hint, .percent-unreal .target-label { color: #e5e7eb; }
+    .target-label { margin: 6px 0 0; font-size: 13px; font-weight: 600; }
+    .progress-track { position: relative; height: 14px; margin-top: 18px; border-radius: 999px; background: rgba(255,255,255,.22); overflow: visible; }
+    .progress-fill { display: block; height: 100%; border-radius: inherit; max-width: 100%; }
+    .percent-excellent .progress-fill { background: #34d399; }
+    .percent-good .progress-fill { background: #4ade80; }
+    .percent-ok .progress-fill { background: #fbbf24; }
+    .percent-bad .progress-fill { background: #f87171; }
+    .percent-unreal .progress-fill { background: #9ca3af; }
+    .target-marker { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-left: -1px; background: rgba(255,255,255,.75); border-radius: 2px; z-index: 2; }
+    .target-marker.m25 { background: #34d399; width: 3px; }
+    .target-marker.m30 { background: #4ade80; width: 3px; }
+    .target-marker.m35 { background: #fbbf24; width: 3px; }
+    .target-marker.m40 { background: #f87171; width: 3px; }
+    .progress-scale { position: relative; height: 18px; margin-top: 6px; color: #e5e7eb; font-size: 10px; font-weight: 600; }
+    .progress-scale .s0 { position: absolute; left: 0; }
+    .progress-scale .s100 { position: absolute; right: 0; }
+    .progress-scale .starget { position: absolute; transform: translateX(-50%); font-weight: 750; }
+    .progress-scale .t25 { color: #6ee7b7; }
+    .progress-scale .t30 { color: #86efac; }
+    .progress-scale .t35 { color: #fcd34d; }
+    .progress-scale .t40 { color: #fca5a5; }
+    @media (max-width: 760px) { main { padding: 18px 12px 32px; } .date { text-align: left; } }
+    @media (max-width: 480px) { .bars { gap: 8px; height: 190px; padding-left: 0; padding-right: 0; } .bar-value { font-size: 11px; } .bar-label { font-size: 12px; } }
+
+    .bar.lightspeed { height: 97.8%; background: var(--blue); }
+.bar.deliveroo { height: 7.0%; background: var(--orange); }
+.bar.uber { height: 7.6%; background: var(--dark); }
+.bar.catering { height: 100.0%; background: var(--green); }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="top">
+      <div>
+        <p class="eyebrow">O'Yo · Sint-Baafs</p>
+        <h1>Sint-Baafs — Rapport 2 oktober</h1>
+      </div>
+      <div class="date">vrijdag 2 oktober 2026</div>
+    </header>
+    <section class="hero" aria-label="Totale omzet">
+      <h2>Totale omzet</h2>
+      <p class="value">€2.214,55</p>
+      <p class="hint">Lightspeed netto + Deliveroo + Uber Eats + catering · 2 oktober</p>
+    </section>
+    <section class="card chart-card" aria-label="Omzet per kanaal">
+      <h2>Omzet per kanaal</h2>
+      <p class="chart-sub">Lightspeed €1.019,35 · Deliveroo €73,30 · Uber Eats €79,40 · catering €1.042,50</p>
+      <div class="bars">
+        <div class="bar-wrap">
+          <div class="bar-value">€1.019,35</div>
+          <div class="bar lightspeed"></div>
+          <div class="bar-label">Lightspeed</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-value">€73,30</div>
+          <div class="bar deliveroo"></div>
+          <div class="bar-label">Deliveroo</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-value">€79,40</div>
+          <div class="bar uber"></div>
+          <div class="bar-label">Uber Eats</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-value">€1.042,50</div>
+          <div class="bar catering"></div>
+          <div class="bar-label">Catering</div>
+        </div>
+      </div>
+    </section>
+    <section class="percent-wrap" aria-label="Loonkostpercentage">
+      <article class="card percent percent-bad">
+        <div class="percent-head">
+          <h2>Loonkost%</h2>
+          <span class="badge badge-bad">Niet goed</span>
+        </div>
+        <p class="value">49,5%</p>
+        <p class="target-label">25–30% zeer goed · 30–35% goed · 35–40% oké · >40% niet goed · &lt;25% onrealistisch</p>
+        <div class="progress-track" role="img" aria-label="Loonkost 49,5 procent, Niet goed">
+          <span class="progress-fill" style="width:49.5%"></span>
+          <span class="target-marker m25" style="left:25%" title="25%"></span>
+          <span class="target-marker m30" style="left:30%" title="30%"></span>
+          <span class="target-marker m35" style="left:35%" title="35%"></span>
+          <span class="target-marker m40" style="left:40%" title="40%"></span>
+        </div>
+        <div class="progress-scale">
+          <span class="s0">0%</span>
+          <span class="starget t25" style="left:25%">25</span>
+          <span class="starget t30" style="left:30%">30</span>
+          <span class="starget t35" style="left:35%">35</span>
+          <span class="starget t40" style="left:40%">40</span>
+          <span class="s100">100%</span>
+        </div>
+        <p class="hint">loonkost €1.095,55 · rendement 50,5%</p>
+      </article>
+    </section>
+    <footer>Dagoverzicht · 2 oktober 2026</footer>
+  </main>
+</body>
+</html>

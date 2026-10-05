@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O'yo maandoverzicht · september 2026</title>
+  <style>
+    :root {
+      --bg: #f5f3ee; --card: #fff; --ink: #1c1c1c; --muted: #6b6b6b;
+      --line: #e7e2d7; --orange: #d9822b; --dark: #1f2937;
+      --latem: #2f6fb0; --sb: #d9822b; --tot: #1f2937;
+      --up: #1f7a3f; --down: #b3261e;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink);
+      font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    main { max-width: 1100px; margin: 0 auto; padding: 22px 16px 48px; }
+    .eyebrow { margin: 0 0 4px; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.03em; }
+    .sub { margin: 6px 0 20px; color: var(--muted); font-size: 13px; }
+    h2.sec { font-size: 18px; margin: 26px 0 8px; letter-spacing: -.01em; }
+    .hero { background: var(--dark); color: #fff; border-radius: 16px; padding: 20px 22px; margin-bottom: 16px; }
+    .hero h2 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #d7dbe1; }
+    .hero .value { margin: 0; font-size: clamp(34px, 7vw, 52px); font-weight: 780; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .hero .meta { margin-top: 8px; color: #c5cad1; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .card h3 { margin: 0 0 2px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 8px; }
+    .card h3 i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+    .omzet { margin: 8px 0 0; font-size: clamp(26px, 5vw, 34px); font-weight: 750; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .lines { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+    .lines div { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; border-top: 1px solid var(--line); }
+    .lines div:first-child { border-top: 0; }
+    .lines b { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .labor-box { margin-top: 12px; padding: 12px; border-radius: 12px; border: 2px solid var(--orange); background: #fffaf3; }
+    .labor-box .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .labor-box .lk { margin: 2px 0 0; font-size: 22px; font-weight: 750; font-variant-numeric: tabular-nums; }
+    .pct-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; }
+    .pct { font-size: 20px; font-weight: 750; font-variant-numeric: tabular-nums; }
+    .badge { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+    .badge.sm { font-size: 10px; padding: 1px 6px; font-weight: 600; text-transform: none; letter-spacing: .02em; }
+    .muted-badge { background: #e7e2d7; color: #6b6b6b; }
+    .badge-excellent { background: #047857; color: #fff; }
+    .badge-good { background: #1f7a3f; color: #fff; }
+    .badge-ok { background: #b45309; color: #fff; }
+    .badge-bad { background: #b42318; color: #fff; }
+    .badge-unreal { background: #6b7280; color: #fff; }
+    .note { margin-top: 14px; font-size: 12px; color: var(--muted); }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; }
+    .hcard { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .hcard h3 { margin: 0 0 8px; font-size: 15px; }
+    .hbars { display: flex; align-items: flex-end; gap: 4px; height: 150px; }
+    .hb { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+    .hf { width: 100%; border-radius: 3px 3px 0 0; }
+    .hv { font-size: 10px; color: var(--muted); margin-bottom: 2px; white-space: nowrap; }
+    .hl { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    ol.prods { margin: 0; padding-left: 22px; font-size: 14px; }
+    ol.prods li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+    ol.prods li:last-child { border-bottom: 0; }
+    .pn { display: inline-block; width: calc(100% - 120px); vertical-align: top; }
+    .pq { display: inline-block; width: 45px; text-align: right; color: var(--muted); font-size: 12px; }
+    .pa { display: inline-block; width: 75px; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .tw { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 14px; }
+    th, td { padding: 7px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; text-align: left; }
+    th { font-size: 12px; color: var(--muted); font-weight: 600; background: #faf8f4; }
+    td.n, th.n { text-align: right; }
+    td.tot { font-weight: 700; }
+    tr.we td { background: #f7f3ea; }
+    tr.allclosed td { color: #9a9a9a; }
+    td.closed { color: #a0a0a0; font-style: italic; font-size: 12px; }
+    tr.totrow td { font-weight: 700; border-top: 2px solid var(--ink); }
+    tbody tr:last-child td { border-bottom: 0; }
+    .delta { font-weight: 700; font-variant-numeric: tabular-nums; }
+    .delta.up { color: var(--up); } .delta.down { color: var(--down); }
+    .callout { background: #fffaf3; border: 1px solid #f0d9b5; border-radius: 12px; padding: 12px 14px; font-size: 13px; color: #5c4a2e; margin-bottom: 10px; }
+    footer { margin-top: 18px; font-size: 12px; color: var(--muted); }
+    @media (max-width: 700px) {
+      .grid, .grid2 { grid-template-columns: 1fr; }
+      .hv { font-size: 8px; }
+      table { font-size: 13px; }
+      th, td { padding: 6px 6px; }
+      .t14 th:nth-child(6), .t14 td:nth-child(6) { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">O'yo · Latem &amp; Sint-Baafs</p>
+  <h1>Maandoverzicht september 2026</h1>
+  <p class="sub">Omzet (Lightspeed netto + delivery + catering) · loonkost AAPI · Tristan 70/30 (SB/Latem) · drukste uren &amp; top producten uit kassa-exports</p>
+
+  <section class="hero">
+    <h2>Totaal omzet</h2>
+    <p class="value">€ 64.594,62</p>
+    <p class="meta">Loonkost € 27.166,52 · 42,1 % · Niet goed</p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h3><i style="background:var(--latem)"></i>Latem</h3>
+      <p class="omzet">€ 16.366,84</p>
+      <div class="lines">
+        <div><span>Lightspeed netto</span><b>€ 16.366,84</b></div>
+        <div><span>Deliveroo</span><b>€ 0,00</b></div>
+        <div><span>Uber Eats</span><b>€ 0,00</b></div>
+        <div><span>Catering</span><b>€ 0,00</b></div>
+      </div>
+      <div class="labor-box">
+        <div class="lbl">Loonkost (incl. Tristan 30%)</div>
+        <div class="lk">€ 3.807,94</div>
+        <div class="pct-row">
+          <span class="pct">23,3%</span>
+          <span class="badge badge-unreal">Onrealistisch</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3><i style="background:var(--sb)"></i>Sint-Baafs</h3>
+      <p class="omzet">€ 48.227,78</p>
+      <div class="lines">
+        <div><span>Lightspeed netto</span><b>€ 42.206,03</b></div>
+        <div><span>Deliveroo</span><b>€ 2.458,25</b></div>
+        <div><span>Uber Eats</span><b>€ 1.105,00</b></div>
+        <div><span>Catering</span><b>€ 2.458,50</b></div>
+      </div>
+      <div class="labor-box">
+        <div class="lbl">Loonkost (incl. Tristan 70%)</div>
+        <div class="lk">€ 23.358,58</div>
+        <div class="pct-row">
+          <span class="pct">48,4%</span>
+          <span class="badge badge-bad">Niet goed</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <p class="note">Tristan Lybaert september: € 4.790,09 planningCost, 70% Sint-Baafs = € 3.353,06 · 30% Latem = € 1.437,03. Catering SB: Lucky Tree € 225,00 + offerte 65 Luc Lybaert € 2.233,50. Beoordeling: &lt;25% onrealistisch · 25–30% zeer goed · 30–35% goed · 35–40% oké · &gt;40% niet goed. Geen Brabantdam.</p>
+
+  <h2 class="sec">Vergelijking vorig jaar</h2>
+  <div class="callout"><b>Omzet YoY: L-Series login OK, maar verkeerde vestiging.</b> SSO (<code>phaedra.lybaert@gmail.com</code>) opent enkel <b>O'Yo Brabantdam</b> (company 30455) — die cijfers gebruiken we <b>niet</b>. <b>Latem</b> staat niet in de L-Series-chain. <b>Sint-Baafs</b> (oid 43403, “O'Yo - Sint-Baafs”) staat wel in de chain, maar token/switch/report geeft permission denied — aparte L-Series-login nodig (<code>oyo.sintbaafsplein@tills.be</code>). Sep 2026-kolom blijft K-Series+delivery+catering (Latem €&nbsp;16.366,84 · SB €&nbsp;48.227,78 · totaal €&nbsp;64.594,62).</div>
+  <div class="tw"><table>
+    <thead><tr><th></th><th class="n">Omzet sep 2026</th><th class="n">Omzet sep 2025</th><th class="n">Δ</th><th class="n">Bron 2026 / 2025</th></tr></thead>
+    <tbody><tr class=""><td class="d">Latem</td><td class="n">€ 16.366,84</td><td class="n"><span class="muted">n.v.t.</span></td><td class="n"><span class="muted">n.v.t.</span></td><td class="n muted">LS netto / —</td></tr><tr class=""><td class="d">Sint-Baafs</td><td class="n">€ 48.227,78</td><td class="n"><span class="muted">n.v.t.</span></td><td class="n"><span class="muted">n.v.t.</span></td><td class="n muted">LS+Del+Uber+cat / —</td></tr><tr class="totrow"><td class="d">Totaal</td><td class="n">€ 64.594,62</td><td class="n"><span class="muted">n.v.t.</span></td><td class="n"><span class="muted">n.v.t.</span></td><td class="n muted">combined / —</td></tr></tbody>
+  </table></div>
+  <p class="muted small">Bron omzet 2026: K-Series netto + Deliveroo/Uber/catering (Sint-Baafs). Bron 2025 vereist: <b>L-Series</b> maandomzet Latem + Sint-Baafs (netto excl. BTW). Zie <code>data/monthly_yoy_2025-09.json</code> (login_ok=true, Latem/SB has_data=false).</p>
+
+  <h2 class="sec">YoY loonkost (AAPI)</h2>
+  <div class="callout">AAPI is de bron voor <b>loonkost</b> (Resultaat per dag → kolom Loonkost / Loonkost-details). Voor <b>sep 2025</b> konden de totalen deze sessie <b>niet uitgelezen</b> worden: datumfilter 01–30/09/2025 werd gezet, maar het grid bleef sticky op een 30-09-2026-rij. Hieronder alleen <b>sep 2026</b> ter referentie (Tristan 70/30 al verwerkt). Geen Brabantdam.</div>
+  <div class="tw"><table>
+    <thead><tr><th></th><th class="n">Loonkost sep 2026</th><th class="n">Loonkost sep 2025</th><th class="n">% van omzet 2026</th></tr></thead>
+    <tbody><tr class=""><td class="d">Latem</td><td class="n">€ 3.807,94</td><td class="n"><span class="muted">niet opgehaald</span></td><td class="n">23,3%</td></tr><tr class=""><td class="d">Sint-Baafs</td><td class="n">€ 23.358,58</td><td class="n"><span class="muted">niet opgehaald</span></td><td class="n">48,4%</td></tr><tr class="totrow"><td class="d">Totaal</td><td class="n">€ 27.166,52</td><td class="n"><span class="muted">niet opgehaald</span></td><td class="n">42,1%</td></tr></tbody>
+  </table></div>
+  <p class="muted small">Bron loonkost 2026: AAPI Resultaat per dag (raw) + Tristan planningCost 70/30 (SB/Latem). Detail: <code>data/monthly_yoy_aapi_2025-09.json</code>.</p>
+
+  <h2 class="sec">Drukste uren</h2>
+  <p class="muted small" style="margin-top:-4px;margin-bottom:8px">Venster <b>16–29 sep 2026</b> · gemiddelde omzet per klokuur over open dagen (afsluittijd kassabon, som <code>Totaal</code>). Latem 12 open dagen · Sint-Baafs 13 open dagen. 29/09 niet in kassabon-export.</p>
+  <div class="grid2"><div class="hcard"><h3>Latem <span class="muted small">piek 13u–14u · gem. € 162 · 12 open dagen</span></h3><div class="hbars"><div class="hb"><div class="hv">27</div><div class="hf" style="height:16.4%;background:#2f6fb0" title="08:00–08:59 · gem. € 26,58 · 1,9 bonnen"></div><div class="hl">8u</div></div><div class="hb"><div class="hv">82</div><div class="hf" style="height:50.6%;background:#2f6fb0" title="09:00–09:59 · gem. € 81,91 · 4,4 bonnen"></div><div class="hl">9u</div></div><div class="hb"><div class="hv">69</div><div class="hf" style="height:42.8%;background:#2f6fb0" title="10:00–10:59 · gem. € 69,34 · 3,2 bonnen"></div><div class="hl">10u</div></div><div class="hb"><div class="hv">65</div><div class="hf" style="height:40.2%;background:#2f6fb0" title="11:00–11:59 · gem. € 65,12 · 3,2 bonnen"></div><div class="hl">11u</div></div><div class="hb"><div class="hv">78</div><div class="hf" style="height:48.0%;background:#2f6fb0" title="12:00–12:59 · gem. € 77,75 · 3,5 bonnen"></div><div class="hl">12u</div></div><div class="hb"><div class="hv">162</div><div class="hf" style="height:100.0%;background:#2f6fb0" title="13:00–13:59 · gem. € 162,02 · 4,7 bonnen"></div><div class="hl">13u</div></div><div class="hb"><div class="hv">100</div><div class="hf" style="height:62.0%;background:#2f6fb0" title="14:00–14:59 · gem. € 100,41 · 3,0 bonnen"></div><div class="hl">14u</div></div><div class="hb"><div class="hv">50</div><div class="hf" style="height:31.0%;background:#2f6fb0" title="15:00–15:59 · gem. € 50,19 · 3,0 bonnen"></div><div class="hl">15u</div></div><div class="hb"><div class="hv">12</div><div class="hf" style="height:7.5%;background:#2f6fb0" title="16:00–16:59 · gem. € 12,21 · 0,7 bonnen"></div><div class="hl">16u</div></div></div></div><div class="hcard"><h3>Sint-Baafs <span class="muted small">piek 13u–14u · gem. € 340 · 13 open dagen</span></h3><div class="hbars"><div class="hb"><div class="hv">0</div><div class="hf" style="height:1.0%;background:#d9822b" title="08:00–08:59 · gem. € 0,36 · 0,1 bonnen"></div><div class="hl">8u</div></div><div class="hb"><div class="hv">181</div><div class="hf" style="height:53.2%;background:#d9822b" title="09:00–09:59 · gem. € 180,55 · 7,9 bonnen"></div><div class="hl">9u</div></div><div class="hb"><div class="hv">243</div><div class="hf" style="height:71.6%;background:#d9822b" title="10:00–10:59 · gem. € 243,02 · 11,3 bonnen"></div><div class="hl">10u</div></div><div class="hb"><div class="hv">276</div><div class="hf" style="height:81.2%;background:#d9822b" title="11:00–11:59 · gem. € 275,72 · 12,8 bonnen"></div><div class="hl">11u</div></div><div class="hb"><div class="hv">333</div><div class="hf" style="height:98.1%;background:#d9822b" title="12:00–12:59 · gem. € 333,21 · 13,4 bonnen"></div><div class="hl">12u</div></div><div class="hb"><div class="hv">340</div><div class="hf" style="height:100.0%;background:#d9822b" title="13:00–13:59 · gem. € 339,60 · 12,8 bonnen"></div><div class="hl">13u</div></div><div class="hb"><div class="hv">156</div><div class="hf" style="height:45.9%;background:#d9822b" title="14:00–14:59 · gem. € 156,02 · 7,6 bonnen"></div><div class="hl">14u</div></div><div class="hb"><div class="hv">93</div><div class="hf" style="height:27.5%;background:#d9822b" title="15:00–15:59 · gem. € 93,30 · 5,3 bonnen"></div><div class="hl">15u</div></div><div class="hb"><div class="hv">39</div><div class="hf" style="height:11.4%;background:#d9822b" title="16:00–16:59 · gem. € 38,64 · 2,5 bonnen"></div><div class="hl">16u</div></div><div class="hb"><div class="hv">2</div><div class="hf" style="height:1.0%;background:#d9822b" title="17:00–17:59 · gem. € 1,66 · 0,1 bonnen"></div><div class="hl">17u</div></div><div class="hb"><div class="hv">1</div><div class="hf" style="height:1.0%;background:#d9822b" title="18:00–18:59 · gem. € 1,23 · 0,1 bonnen"></div><div class="hl">18u</div></div></div></div></div>
+
+  <h2 class="sec">Top 10 producten (bruto)</h2>
+  <p class="muted small" style="margin-top:-4px;margin-bottom:8px">Exportperiode <b>30 jun – 29 sep 2026</b> (niet september-only; Lightspeed product-re-export voor enkel sep niet uitgevoerd).</p>
+  <div class="grid2"><div class="hcard"><h3>Latem <span class="muted small">export 30 jun – 29 sep 2026 · top 10 = 50% van omzet</span></h3><ol class="prods"><li><span class="pn">Spiced Avocado toast</span><span class="pq">445×</span><span class="pa">€ 6.898</span></li><li><span class="pn">Cappuccino</span><span class="pq">727×</span><span class="pa">€ 3.272</span></li><li><span class="pn">Avo &amp; &#x27;Eggs&#x27;</span><span class="pq">190×</span><span class="pa">€ 3.135</span></li><li><span class="pn">Sweet &amp; Salty Brunch (Latem)</span><span class="pq">109×</span><span class="pa">€ 2.725</span></li><li><span class="pn">Chuncky Monkey Açaí bowl</span><span class="pq">187×</span><span class="pa">€ 2.618</span></li><li><span class="pn">Garden Glow</span><span class="pq">127×</span><span class="pa">€ 2.476</span></li><li><span class="pn">Kimchi Chick</span><span class="pq">109×</span><span class="pa">€ 2.016</span></li><li><span class="pn">Pickle Me Softly</span><span class="pq">125×</span><span class="pa">€ 1.875</span></li><li><span class="pn">Golden Goodness</span><span class="pq">103×</span><span class="pa">€ 1.700</span></li><li><span class="pn">O&#x27;yo Classic</span><span class="pq">154×</span><span class="pa">€ 1.694</span></li></ol></div><div class="hcard"><h3>Sint-Baafs <span class="muted small">export 30 jun – 29 sep 2026 · top 10 = 47% van omzet</span></h3><ol class="prods"><li><span class="pn">Spiced Avocado toast</span><span class="pq">772×</span><span class="pa">€ 11.966</span></li><li><span class="pn">Avo &amp; &#x27;Eggs&#x27;</span><span class="pq">611×</span><span class="pa">€ 10.082</span></li><li><span class="pn">Sweet &amp; Salty Brunch</span><span class="pq">302×</span><span class="pa">€ 7.550</span></li><li><span class="pn">Pancake Stack</span><span class="pq">895×</span><span class="pa">€ 6.712</span></li><li><span class="pn">Belly Dancer toast</span><span class="pq">394×</span><span class="pa">€ 6.501</span></li><li><span class="pn">Golden Goodness</span><span class="pq">389×</span><span class="pa">€ 6.418</span></li><li><span class="pn">Cappuccino</span><span class="pq">1417×</span><span class="pa">€ 6.376</span></li><li><span class="pn">Garden Glow</span><span class="pq">320×</span><span class="pa">€ 6.240</span></li><li><span class="pn">Chuncky Monkey Açaí bowl</span><span class="pq">419×</span><span class="pa">€ 5.866</span></li><li><span class="pn">Courgetti Pesto</span><span class="pq">283×</span><span class="pa">€ 5.094</span></li></ol></div></div>
+
+  <h2 class="sec">Laatste 14 dagen</h2>
+  <p class="muted small" style="margin-top:-4px;margin-bottom:8px">Bruto omzet incl. btw uit verkoopoverzicht · 16–29 sep 2026. 29/09 ontbreekt in lokale ZIP (t/m 28/09) en kassabonnen.</p>
+  <div class="tw"><table class="t14"><thead><tr><th>Dag</th>
+      <th class="n">Latem</th><th class="n">Sint-Baafs</th><th class="n">Totaal</th><th class="n">Bonnen</th><th class="n">Gem. bon</th></tr></thead>
+      <tbody><tr class="allclosed"><td class="d"><b>di</b> 29/9 <span class="badge sm muted-badge">geen export</span></td><td class="n muted">–</td><td class="n muted">–</td><td class="n tot">–</td><td class="n">–</td><td class="n">–</td></tr><tr class=""><td class="d"><b>ma</b> 28/9</td><td class="n">€ 816,90</td><td class="n">€ 1.466,43</td><td class="n tot">€ 2.283,33</td><td class="n">98</td><td class="n">€ 23,30</td></tr><tr class="we"><td class="d"><b>zo</b> 27/9</td><td class="n closed">gesloten</td><td class="n">€ 2.330,34</td><td class="n tot">€ 2.330,34</td><td class="n">87</td><td class="n">€ 26,79</td></tr><tr class="we"><td class="d"><b>za</b> 26/9</td><td class="n">€ 923,10</td><td class="n">€ 2.401,25</td><td class="n tot">€ 3.324,35</td><td class="n">135</td><td class="n">€ 24,62</td></tr><tr class=""><td class="d"><b>vr</b> 25/9</td><td class="n">€ 737,10</td><td class="n">€ 1.207,83</td><td class="n tot">€ 1.944,93</td><td class="n">94</td><td class="n">€ 20,69</td></tr><tr class=""><td class="d"><b>do</b> 24/9</td><td class="n">€ 649,00</td><td class="n">€ 989,40</td><td class="n tot">€ 1.638,40</td><td class="n">70</td><td class="n">€ 23,41</td></tr><tr class=""><td class="d"><b>wo</b> 23/9</td><td class="n">€ 731,60</td><td class="n">€ 1.692,24</td><td class="n tot">€ 2.423,84</td><td class="n">105</td><td class="n">€ 23,08</td></tr><tr class=""><td class="d"><b>di</b> 22/9</td><td class="n">€ 655,50</td><td class="n">€ 1.042,30</td><td class="n tot">€ 1.697,80</td><td class="n">84</td><td class="n">€ 20,21</td></tr><tr class=""><td class="d"><b>ma</b> 21/9</td><td class="n">€ 542,00</td><td class="n">€ 1.488,65</td><td class="n tot">€ 2.030,65</td><td class="n">95</td><td class="n">€ 21,38</td></tr><tr class="we"><td class="d"><b>zo</b> 20/9</td><td class="n">€ 254,50</td><td class="n">€ 1.938,40</td><td class="n tot">€ 2.192,90</td><td class="n">101</td><td class="n">€ 21,71</td></tr><tr class="we"><td class="d"><b>za</b> 19/9</td><td class="n">€ 615,50</td><td class="n">€ 3.441,40</td><td class="n tot">€ 4.056,90</td><td class="n">161</td><td class="n">€ 25,20</td></tr><tr class=""><td class="d"><b>vr</b> 18/9</td><td class="n">€ 796,70</td><td class="n">€ 1.652,10</td><td class="n tot">€ 2.448,80</td><td class="n">91</td><td class="n">€ 26,91</td></tr><tr class=""><td class="d"><b>do</b> 17/9</td><td class="n">€ 706,45</td><td class="n">€ 832,60</td><td class="n tot">€ 1.539,05</td><td class="n">76</td><td class="n">€ 20,25</td></tr><tr class=""><td class="d"><b>wo</b> 16/9</td><td class="n">€ 565,60</td><td class="n">€ 1.237,30</td><td class="n tot">€ 1.802,90</td><td class="n">90</td><td class="n">€ 20,03</td></tr></tbody></table></div>
+
+  <footer>Bronnen: Lightspeed Verkoopoverzicht · AAPI Resultaat per dag · Deliveroo / Uber Eats (Sint-Baafs) · catering Lucky Tree + offerte 65 Luc Lybaert · kassabonnen &amp; product_breakdown exports · YoY: L-Series login=Brabantdam only — Latem/SB sep 2025 nog niet · loonkost sep 2025 niet opgehaald. Gegenereerd 05/10/2026 14:56.</footer>
+</main>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Latem — Rapport 7 oktober</title>
+  <title>Latem — Rapport 8 oktober</title>
   <style>
 :root { --bg:#f5f3ee; --card:#fff; --ink:#1c1c1c; --muted:#6b6b6b; --line:#e7e2d7;
   --blue:#2f6fb0; --orange:#d9822b; --dark:#1f2937; --green:#1f7a3f; }
@@ -25,8 +25,6 @@ h1 { margin:0; font-size:clamp(25px,4vw,34px); letter-spacing:-.03em; }
 .badge { display:inline-block; padding:5px 11px; border-radius:999px; font-size:12px; font-weight:750; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
 .b-green { background:#1f7a3f; color:#fff; } .b-amber { background:#b45309; color:#fff; }
 .b-gray { background:#6b7280; color:#fff; } .b-red { background:#b42318; color:#fff; }
-.b-excellent { background:#047857; color:#fff; } .b-good { background:#1f7a3f; color:#fff; }
-.b-ok { background:#b45309; color:#fff; } .b-bad { background:#b42318; color:#fff; } .b-unreal { background:#6b7280; color:#fff; }
 .row { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
 .staff-nums { margin:10px 0 0; font-size:15px; font-variant-numeric:tabular-nums; }
 .staff-nums b { font-size:22px; }
@@ -53,9 +51,17 @@ h1 { margin:0; font-size:clamp(25px,4vw,34px); letter-spacing:-.03em; }
 .bar-value { margin-bottom:4px; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
 .bar { width:min(100%,64px); min-height:3px; border-radius:6px 6px 0 0; }
 .bar-label { margin-top:6px; color:var(--muted); font-size:12px; text-align:center; }
-.loon { background:#faf8f4; }
-.loon .line { margin:0; font-size:14px; font-variant-numeric:tabular-nums; }
-.loon .line b { font-size:16px; }
+.prod { border-radius:16px; padding:16px 18px; margin-bottom:14px; border:2px solid; }
+.prod h2 { margin:0; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+.prod .value { margin:6px 0 0; font-size:clamp(40px,8vw,58px); font-weight:780; letter-spacing:-.035em; line-height:1.05; font-variant-numeric:tabular-nums; }
+.prod .value small { font-size:.42em; font-weight:700; letter-spacing:0; }
+.prod .doel { margin:4px 0 0; font-size:17px; font-variant-numeric:tabular-nums; }
+.prod .nog { margin:8px 0 0; font-size:15px; font-weight:650; font-variant-numeric:tabular-nums; }
+.prod .hint { margin:8px 0 0; color:var(--muted); font-size:12.5px; }
+.prod-green { background:#ecf7ef; border-color:#1f7a3f; } .prod-green .value { color:#1f7a3f; }
+.prod-amber { background:#fff4e5; border-color:#d9822b; } .prod-amber .value { color:#b45309; }
+.prod-red { background:#fdecea; border-color:#b42318; } .prod-red .value { color:#b42318; }
+.prod-gray { background:#fff; border-color:var(--line); }
 .bar-off { display:block; margin-top:2px; color:#b42318; font-size:10.5px; font-weight:750; text-transform:uppercase; letter-spacing:.04em; }
 footer { margin-top:16px; color:var(--muted); font-size:12px; }
 @media (max-width:480px) { .bar-off { font-size:10px; } main { padding:18px 12px 28px; } .date { text-align:left; } .win .txt { font-size:17px; } }
@@ -68,43 +74,56 @@ footer { margin-top:16px; color:var(--muted); font-size:12px; }
 .minpunt .owin { margin:0; color:#7f1d1d; font-size:13px; font-weight:600; }
 .minpunt .sub { margin:6px 0 0; color:#7f1d1d; font-size:13px; }
 .delivery-ok { margin:8px 0 0; color:#6b7280; font-size:12px; }
+
+.review-plus { background:#ecf7ef; border:2px solid #1f7a3f; border-radius:16px; padding:14px 18px; margin-bottom:14px; display:flex; gap:12px; align-items:flex-start; }
+.review-plus .ico { flex:none; width:34px; height:34px; border-radius:50%; background:#1f7a3f; color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center; }
+.review-plus .lbl { margin:0 0 2px; color:#1f7a3f; font-size:12px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.review-plus .txt, .review-min .txt { margin:0; font-size:16px; font-weight:650; color:#1c1c1c; }
+.review-plus .txt + .txt, .review-min .txt + .txt { margin-top:6px; }
+.rv-more { margin:6px 0 0; font-size:12.5px; font-weight:650; }
+.review-plus .rv-more { color:#1f7a3f; } .review-min .rv-more { color:#7f1d1d; }
+.rv-time { color:#6b7280; font-size:12px; font-weight:500; }
+.rv-neutral { margin:0 0 14px; padding:0 4px; color:#6b6b6b; font-size:13px; }
+.rv-neutral p { margin:0 0 3px; }
 </style>
 </head>
 <body>
   <main>
     <header class="top">
-      <div><p class="eyebrow">O'Yo · Latem</p><h1>Latem — Rapport 7 oktober</h1></div>
-      <div class="date">woensdag 7 oktober 2026</div>
+      <div><p class="eyebrow">O'Yo · Latem</p><h1>Latem — Rapport 8 oktober</h1></div>
+      <div class="date">donderdag 8 oktober 2026</div>
     </header>
     <section class="win" aria-label="Wat ging goed">
       <div class="ico">★</div>
-      <div><p class="lbl">Goed gedaan</p><p class="txt">Meeste tickets van de laatste 5 woensdagen: 43 (vorige woensdag 27).</p></div>
+      <div><p class="lbl">Goed gedaan</p><p class="txt">28 klanten geholpen, bedankt!</p></div>
     </section>
-    <section class="card" aria-label="Bezetting">
-      <div class="row"><h2 style="margin:0">Bezetting vs minimum</h2><span class="badge b-green">Bezetting op minimum ✓</span></div>
-      <p class="staff-nums"><b>12,9u</b> gewerkt · minimum woensdag <b>12u</b></p>
-      <div class="meter"><span class="fill" style="width:71.6%;background:#4ade80"></span><span class="min" style="left:66.7%"></span></div>
-      <p class="note strong">Hoge loonkost ligt vandaag aan de omzet, niet aan de bezetting.</p>
+    <section class="prod prod-red" aria-label="Omzet per uur" data-opu="45.33" data-doel="81">
+      <div class="row"><h2>Omzet per uur</h2><span class="badge b-red">Onder het doel</span></div>
+      <p class="value"><span data-opu-shown>€45</span> <small>per uur</small></p>
+      <p class="doel">Doel: <b>€81 per uur</b></p>
+      <p class="nog">Nog <b data-nog>€285</b> omzet nodig om het doel te halen</p>
+      <p class="hint">Totale omzet €362,62 ÷ 8,0 gewerkte uren. Doel volgt uit de mix vast / student / dagcontract van vandaag.</p>
+    </section>
+    <section class="card" aria-label="Bezetting" data-bez="onder_minimum">
+      <div class="row"><h2 style="margin:0">Bezetting vs minimum</h2><span class="badge b-gray">Minder uren dan het minimum</span></div>
+      <p class="staff-nums"><b>8,0u</b> gewerkt · minimum donderdag <b>12u</b></p>
+      <div class="meter"><span class="fill" style="width:44.4%;background:#9ca3af"></span><span class="min" style="left:66.7%"></span></div>
+      <p class="note">Minder uren ingepland dan het minimum.</p>
     </section>
     <section class="score" aria-label="Gemiddeld ticket">
       <h2>Gemiddeld ticket</h2>
-      <p class="value">€17,22</p>
-      <p class="hint">Lightspeed netto €740,49 ÷ 43 tickets</p>
-      <div class="cmp"><div class="cell up-cell"><p class="k">vs vorige woensdag (30 sep)</p><p class="v"><span class="up">▲ +€1,24</span></p><p class="k">was €15,98</p></div><div class="cell up-cell"><p class="k">vs gem. vorige 4 woensdagen</p><p class="v"><span class="up">▲ +€0,49</span></p><p class="k">was €16,73</p></div></div>
-      <div class="cmp tix"><div class="cell" style="grid-column:1 / -1"><p class="k">Tickets</p><p class="v">43 &nbsp;<span style="font-size:14px;font-weight:600"><span class="up">▲ +16</span> vs vorige woensdag (27) · gem. vorige 4: 33</span></p></div></div>
-      <p class="small">Vergeleken met 30 sep, 23 sep, 16 sep, 9 sep (Lightspeed kassabonnen).</p>
+      <p class="value">€12,95</p>
+      <p class="hint">Lightspeed netto €362,62 ÷ 28 tickets</p>
+      <div class="cmp"><div class="cell"><p class="k">vs vorige donderdag (1 okt)</p><p class="v"><span class="flat">▼ −€10,62</span></p><p class="k">was €23,57</p></div><div class="cell"><p class="k">vs gem. vorige 4 donderdagen</p><p class="v"><span class="flat">▼ −€8,01</span></p><p class="k">was €20,96</p></div></div>
+      <div class="cmp tix"><div class="cell" style="grid-column:1 / -1"><p class="k">Tickets</p><p class="v">28 &nbsp;<span style="font-size:14px;font-weight:600"><span class="flat">▼ −5</span> vs vorige donderdag (33) · gem. vorige 4: 30</span></p></div></div>
+      <p class="small">Vergeleken met 1 okt, 24 sep, 17 sep, 10 sep (Lightspeed kassabonnen).</p>
     </section>
     <section class="card omzet" aria-label="Omzet">
-      <div class="row"><h2 style="margin:0">Totale omzet</h2><p class="total">€740,49</p></div>
+      <div class="row"><h2 style="margin:0">Totale omzet</h2><p class="total">€362,62</p></div>
       <p class="note" style="margin-top:2px">Lightspeed netto (kassa)</p>
 
     </section>
-    <section class="card loon" aria-label="Loonkost">
-      <h2>Loonkost (ter info)</h2>
-      <p class="line"><b>55,2%</b></p>
-      <p class="note">Omzet nodig voor 35% met deze bezetting: <b style="color:var(--ink)" data-nodig35>€1.045</b> · vandaag €740,49</p><p class="note" style="font-size:11.5px;margin-top:2px">(op basis van gemiddeld uurloon)</p>
-    </section>
-    <footer>Dagoverzicht · 7 oktober 2026</footer>
+    <footer>Dagoverzicht · 8 oktober 2026</footer>
   </main>
 </body>
 </html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sint-Baafs — Rapport 11 oktober</title>
+  <style>
+:root { --bg:#f5f3ee; --card:#fff; --ink:#1c1c1c; --muted:#6b6b6b; --line:#e7e2d7;
+  --blue:#2f6fb0; --orange:#d9822b; --dark:#1f2937; --green:#1f7a3f; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust:100%; }
+main { max-width:1040px; margin:0 auto; padding:24px 18px 34px; }
+.top { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+h1 { margin:0; font-size:clamp(25px,4vw,34px); letter-spacing:-.03em; }
+.eyebrow { margin:0 0 5px; color:var(--orange); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.date { color:var(--muted); font-size:14px; text-align:right; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 17px; margin-bottom:14px; }
+.card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+.win { background:#ecf7ef; border:2px solid #1f7a3f; border-radius:16px; padding:16px 18px; margin-bottom:14px; display:flex; gap:12px; align-items:flex-start; }
+.win .ico { flex:none; width:34px; height:34px; border-radius:50%; background:#1f7a3f; color:#fff; font-size:19px; display:flex; align-items:center; justify-content:center; }
+.win .lbl { margin:0 0 2px; color:#1f7a3f; font-size:12px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.win .txt { margin:0; font-size:18px; font-weight:700; letter-spacing:-.01em; }
+.badge { display:inline-block; padding:5px 11px; border-radius:999px; font-size:12px; font-weight:750; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
+.b-green { background:#1f7a3f; color:#fff; } .b-amber { background:#b45309; color:#fff; }
+.b-gray { background:#6b7280; color:#fff; } .b-red { background:#b42318; color:#fff; }
+.row { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+.staff-nums { margin:10px 0 0; font-size:15px; font-variant-numeric:tabular-nums; }
+.staff-nums b { font-size:22px; }
+.note { margin:8px 0 0; color:var(--muted); font-size:13px; }
+.note.strong { color:var(--ink); font-weight:600; }
+.meter { position:relative; height:10px; margin-top:12px; border-radius:999px; background:#eee9df; }
+.meter .fill { position:absolute; left:0; top:0; bottom:0; border-radius:999px; }
+.meter .min { position:absolute; top:-4px; bottom:-4px; width:3px; background:var(--dark); border-radius:2px; }
+.score { background:var(--dark); color:#fff; border:2px solid var(--dark); border-radius:16px; padding:18px 18px 16px; margin-bottom:14px; }
+.score h2 { margin:0 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:#d7dbe1; }
+.score .value { margin:0; font-size:clamp(40px,8vw,60px); font-weight:780; letter-spacing:-.035em; font-variant-numeric:tabular-nums; }
+.score .hint { margin:2px 0 12px; color:#c5cad1; font-size:13px; }
+.cmp { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.cmp .cell { background:rgba(255,255,255,.08); border-radius:12px; padding:10px 12px; }
+.cmp .k { margin:0; color:#c5cad1; font-size:12px; }
+.cmp .v { margin:2px 0 0; font-size:17px; font-weight:700; font-variant-numeric:tabular-nums; }
+.up { color:#4ade80; } .flat { color:#e5e7eb; }
+.cmp .cell.up-cell { background:rgba(74,222,128,.14); }
+.tix { margin-top:10px; }
+.small { margin:10px 0 0; color:#aeb4bd; font-size:11.5px; }
+.omzet .total { margin:0; font-size:28px; font-weight:760; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.bars { display:flex; align-items:flex-end; justify-content:space-around; gap:12px; height:112px; padding:8px 4px 0; margin-top:8px; border-bottom:1px solid var(--line); }
+.bar-wrap { display:flex; flex:1; height:100%; max-width:140px; flex-direction:column; align-items:center; justify-content:flex-end; }
+.bar-value { margin-bottom:4px; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.bar { width:min(100%,64px); min-height:3px; border-radius:6px 6px 0 0; }
+.bar-label { margin-top:6px; color:var(--muted); font-size:12px; text-align:center; }
+.prod { border-radius:16px; padding:16px 18px; margin-bottom:14px; border:2px solid; }
+.prod h2 { margin:0; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+.prod .value { margin:6px 0 0; font-size:clamp(40px,8vw,58px); font-weight:780; letter-spacing:-.035em; line-height:1.05; font-variant-numeric:tabular-nums; }
+.prod .value small { font-size:.42em; font-weight:700; letter-spacing:0; }
+.prod .doel { margin:4px 0 0; font-size:17px; font-variant-numeric:tabular-nums; }
+.prod .nog { margin:8px 0 0; font-size:15px; font-weight:650; font-variant-numeric:tabular-nums; }
+.prod .hint { margin:8px 0 0; color:var(--muted); font-size:12.5px; }
+.prod-green { background:#ecf7ef; border-color:#1f7a3f; } .prod-green .value { color:#1f7a3f; }
+.prod-amber { background:#fff4e5; border-color:#d9822b; } .prod-amber .value { color:#b45309; }
+.prod-red { background:#fdecea; border-color:#b42318; } .prod-red .value { color:#b42318; }
+.prod-gray { background:#fff; border-color:var(--line); }
+.bar-off { display:block; margin-top:2px; color:#b42318; font-size:10.5px; font-weight:750; text-transform:uppercase; letter-spacing:.04em; }
+footer { margin-top:16px; color:var(--muted); font-size:12px; }
+@media (max-width:480px) { .bar-off { font-size:10px; } main { padding:18px 12px 28px; } .date { text-align:left; } .win .txt { font-size:17px; } }
+
+.minpunt { background:#fdecea; border:2px solid #b42318; border-radius:16px; padding:14px 18px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start; }
+.minpunt .ico { flex:none; width:34px; height:34px; border-radius:50%; background:#b42318; color:#fff; font-size:19px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+.minpunt .lbl { margin:0 0 2px; color:#b42318; font-size:12px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.minpunt .txt { margin:0; font-size:17px; font-weight:700; color:#1c1c1c; }
+.minpunt .txt + .txt, .minpunt .owin + .txt { margin-top:6px; }
+.minpunt .owin { margin:0; color:#7f1d1d; font-size:13px; font-weight:600; }
+.minpunt .sub { margin:6px 0 0; color:#7f1d1d; font-size:13px; }
+.delivery-ok { margin:8px 0 0; color:#6b7280; font-size:12px; }
+
+.review-plus { background:#ecf7ef; border:2px solid #1f7a3f; border-radius:16px; padding:14px 18px; margin-bottom:14px; display:flex; gap:12px; align-items:flex-start; }
+.review-plus .ico { flex:none; width:34px; height:34px; border-radius:50%; background:#1f7a3f; color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center; }
+.review-plus .lbl { margin:0 0 2px; color:#1f7a3f; font-size:12px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.review-plus .txt, .review-min .txt { margin:0; font-size:16px; font-weight:650; color:#1c1c1c; }
+.review-plus .txt + .txt, .review-min .txt + .txt { margin-top:6px; }
+.rv-more { margin:6px 0 0; font-size:12.5px; font-weight:650; }
+.review-plus .rv-more { color:#1f7a3f; } .review-min .rv-more { color:#7f1d1d; }
+.rv-time { color:#6b7280; font-size:12px; font-weight:500; }
+.rv-neutral { margin:0 0 14px; padding:0 4px; color:#6b6b6b; font-size:13px; }
+.rv-neutral p { margin:0 0 3px; }
+</style>
+</head>
+<body>
+  <main>
+    <header class="top">
+      <div><p class="eyebrow">O'Yo · Sint-Baafs</p><h1>Sint-Baafs — Rapport 11 oktober</h1></div>
+      <div class="date">zondag 11 oktober 2026</div>
+    </header>
+    <section class="win" aria-label="Wat ging goed">
+      <div class="ico">★</div>
+      <div><p class="lbl">Goed gedaan</p><p class="txt">Gemiddeld ticket €22,52 ligt boven het gemiddelde van de vorige 4 zondagen (€21,95).</p></div>
+    </section>
+    <section class="prod prod-green" aria-label="Omzet per uur" data-opu="92.64" data-doel="59">
+      <div class="row"><h2>Omzet per uur</h2><span class="badge b-green">Doel gehaald ✓</span></div>
+      <p class="value"><span data-opu-shown>€92</span> <small>per uur</small></p>
+      <p class="doel">Doel: <b>€59 per uur</b></p>
+      
+      <p class="hint">Totale omzet €2.672,55 ÷ 28,9 gewerkte uren. Doel volgt uit de mix vast / student / dagcontract van vandaag.</p>
+    </section>
+    <section class="card" aria-label="Bezetting" data-bez="onder_minimum">
+      <div class="row"><h2 style="margin:0">Bezetting vs minimum</h2><span class="badge b-gray">Minder uren dan het minimum</span></div>
+      <p class="staff-nums"><b>28,9u</b> gewerkt · minimum zondag <b>30u</b></p>
+      <div class="meter"><span class="fill" style="width:64.1%;background:#9ca3af"></span><span class="min" style="left:66.7%"></span></div>
+      <p class="note">Minder uren ingepland dan het minimum.</p>
+    </section>
+    <section class="score" aria-label="Gemiddeld ticket">
+      <h2>Gemiddeld ticket</h2>
+      <p class="value">€22,52</p>
+      <p class="hint">Lightspeed netto €2.522,05 ÷ 112 tickets</p>
+      <div class="cmp"><div class="cell"><p class="k">vs vorige zondag (4 okt)</p><p class="v"><span class="flat">▼ −€3,65</span></p><p class="k">was €26,17</p></div><div class="cell up-cell"><p class="k">vs gem. vorige 4 zondagen</p><p class="v"><span class="up">▲ +€0,57</span></p><p class="k">was €21,95</p></div></div>
+      <div class="cmp tix"><div class="cell" style="grid-column:1 / -1"><p class="k">Tickets</p><p class="v">112 &nbsp;<span style="font-size:14px;font-weight:600"><span class="flat">▼ −16</span> vs vorige zondag (128) · gem. vorige 4: 105</span></p></div></div>
+      <p class="small">Vergeleken met 4 okt, 27 sep, 20 sep, 13 sep (Lightspeed kassabonnen).</p>
+    </section>
+    <section class="card omzet" aria-label="Omzet">
+      <div class="row"><h2 style="margin:0">Totale omzet</h2><p class="total">€2.672,55</p></div>
+      <p class="note" style="margin-top:2px">Lightspeed netto + Deliveroo + Uber Eats + catering</p>
+
+      <div class="bars">
+        <div class="bar-wrap"><div class="bar-value">€2.522,05</div><div class="bar" style="height:100.0%;background:var(--blue)"></div><div class="bar-label">Lightspeed</div></div>
+        <div class="bar-wrap"><div class="bar-value">€108,50</div><div class="bar" style="height:4.3%;background:var(--orange)"></div><div class="bar-label">Deliveroo</div></div>
+        <div class="bar-wrap"><div class="bar-value">€42,00</div><div class="bar" style="height:2.0%;background:var(--dark)"></div><div class="bar-label">Uber Eats</div></div>
+        <div class="bar-wrap"><div class="bar-value">€0,00</div><div class="bar" style="height:2.0%;background:var(--green)"></div><div class="bar-label">Catering</div></div>
+      </div>
+    </section>
+    <footer>Dagoverzicht · 11 oktober 2026</footer>
+  </main>
+</body>
+</html>
